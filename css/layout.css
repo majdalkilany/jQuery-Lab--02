@@ -1,0 +1,39 @@
+#photo-template{
+    display: inline-block;
+     /* height: 300px; */
+    /* width: 300px;  */
+padding: 10px;  
+width: 300px;
+height: 350px;
+margin: 20px;
+float: left;
+
+}
+h2{
+    width: 150px;
+    text-align: center;
+    padding-left: 25%;
+}
+#p1{
+    width: 280px;
+    height: 50px;
+} 
+img{
+    height: 200px;
+    padding: 0px; 
+}
+main{
+    margin-left: 10%;
+    display: inline-block;
+     text-align: center;
+padding-top: 100px;
+
+}
+h1{
+    text-align: center;
+}
+select{
+    margin-left:  45%;
+    margin-top: 2%;
+}
+
