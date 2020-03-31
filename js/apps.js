@@ -52,9 +52,17 @@ $('#selectEle').on('change' ,function(){
             $(`section`).hide()
             $(`.${unRepeatArray[i]}`).show()
 
-        // $(`.${unRepeatArray[i]}`).showe()
     }
+    if ($('#selectEle').val() == unRepeatArray[i]){
+
+    
 }
+
+if ($('#selectEle').val() == 'default'){
+    $(`section`).show()
+}
+}
+
 })
 
 
