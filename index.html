@@ -10,6 +10,26 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/them.css">
 
+
+
+<script id='template' type="x-tmpl-mustache" > 
+
+<div class="{{keyword}}" >
+
+  <h2>{{title}} </h2>
+  <img src="{{image_url}}" alt="{{keyword}}" class="hide" id="{{keyword}}" >
+  <p>{{description}} </p>
+
+</div>
+
+
+
+
+</script>
+
+
+
+
   </head>
   <body>
     <header>
@@ -18,8 +38,32 @@
         <option value="default"  class="remove">Filter by Keyword</option>
 
       </select>
+      <button id="button1" class="active">Page 1  </button>
+
+      <button id="button2">Page 2</button>
+
+      <select id="sorting">
+        <option value="sort"  class="Filter">sort</option>
+
+        <option value="by-title"  class="remove">Filter by title</option>
+
+        <option value="by-horn"  class="remove">Filter by horn</option>
+
+      </select>
+
+      
+
     </header>
     <main>
+
+      <section class="hide" id= "photo-template-page2">
+        <h2></h2>
+        <img src="" alt="" class="hide">
+        <p></p>
+      </section>
+
+
+
       <section class="hide" id= "photo-template">
         <h2></h2>
         <img src="" alt="" class="hide">
@@ -28,7 +72,10 @@
     </main>
     <footer>
       &copy; 2018 Code Fellows
+      <script src="https://unpkg.com/mustache@latest"></script> 
+
       <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
       <script src="js/apps.js"></script>
     </footer>
   </body>

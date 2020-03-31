@@ -1,20 +1,52 @@
 'use strict'
 let ibrahim;
+let majd;
+
+
 $.get('./data/page-1.json')
     .then(galeryOfHorns => {
         galeryOfHorns.forEach((val) => {
 
 
-            let ibrahim = new Horns(val.image_url, val.title, val.description, val.keyword, val.horns);
+            ibrahim = new Horns(val.image_url, val.title, val.description, val.keyword, val.horns);
 
-            ibrahim.render();
+            ibrahim.printOut();
 
         });
 
         renderSelect()
-        $('.hide').remove()
+        // $('.hide').remove()
 
     });
+
+
+
+
+
+    $.get('./data/page-2.json')
+    .then(page2 => {
+        page2.forEach((val) => {
+
+
+             majd = new Page2(val.image_url, val.title, val.description, val.keyword, val.horns);
+
+            // majd.printOut();
+
+        });
+
+        renderSelect()
+        // $('.hide').remove()
+
+    });
+
+
+
+
+
+
+
+let hornsArray = []
+
 
 function Horns(image_url, title, description, keyword, horns) {
     this.image_url = image_url;
@@ -23,46 +55,81 @@ function Horns(image_url, title, description, keyword, horns) {
     this.keyword = keyword;
     this.horns = horns;
     keywordArray.push(this.keyword)
-
+    hornsArray.push(this)
 
 }
+
+
+let page2Array  =[]; 
+
+function Page2(image_url, title, description, keyword, horns) {
+    this.image_url = image_url;
+    this.title = title;
+    this.description = description;
+    this.keyword = keyword;
+    this.horns = horns;
+    keywordArray.push(this.keyword)
+page2Array.push(this)
+
+}
+
+
 var keywordArray = []
 
 let unRepeatArray =[]
-let p;
 
-Horns.prototype.render = function () {
+Horns.prototype.printOut = function () {
 
-    let choose = $('#photo-template').clone();
-    choose.find('h2').text(this.title);
-    choose.attr('class', this.keyword)
-    choose.find('img').attr({ 'src': this.image_url, 'width': 300, 'class': 'cssClass', 'hight': 250 });
-    choose.find('p').text(this.description);
-    $('main').append(choose);
+    // let options = $('#keywordstemplate').html();
+    // var rendered = Mustache.render(options , this);
+    // $('header select').append(rendered);
+  
 
-    // keywordArray.push(this.keyword)
+    let choose = $('#template').html();
+let html = Mustache.render(choose,this)
+console.log(choose)
+let sections = $('#photo-template').append(html);
+console.log(sections)
+$('main').append(sections)
+
 
 }
+
+
+Page2.prototype.printOut = function () {
+
+    // let options = $('#keywordstemplate').html();
+    // var rendered = Mustache.render(options , this);
+    // $('header select').append(rendered);
+  
+
+    let choose = $('#template').html();
+let html = Mustache.render(choose,this)
+console.log(choose)
+let sections2 = $('#photo-template-page2').append(html);
+console.log(sections2)
+$('main').append(sections2)
+
+}
+
+
+$(`div`).hide()
 
 $('#selectEle').on('change' ,function(){
     console.log($('#selectEle').val())
 
     for(let i =0 ;i< unRepeatArray.length ; i++)  {
-    if ($('#selectEle').val() == unRepeatArray[i]){
-            $(`section`).hide()
+    if ($(`#selectEle`).val() == unRepeatArray[i]){
+            $(`div`).hide()
+
+            console.log($(`div`).hide())
             $(`.${unRepeatArray[i]}`).show()
-
-    }
-    if ($('#selectEle').val() == unRepeatArray[i]){
-
-    
 }
 
 if ($('#selectEle').val() == 'default'){
-    $(`section`).show()
+    $(`div`).show()
 }
-}
-
+    }
 })
 
 
@@ -80,8 +147,48 @@ if ($('#selectEle').val() == 'default'){
         }
     }
     for (let i = 0; i < unRepeatArray.length; i++) {
-        $('select').append(`<option value ='${unRepeatArray[i]}'>${unRepeatArray[i]}</option>`);
-        console.log('mmmmm  ' + unRepeatArray[i])
+        $('#selectEle').append(`<option value ='${unRepeatArray[i]}'>${unRepeatArray[i]}</option>`);
     }
 
  }
+
+ $('#button1').on('click',function(){
+     $('#photo-template-page2').empty();
+     let choose = $('#template').html();
+    //  let html = Mustache.render(choose,this)
+    //  console.log(choose)
+    //  let sections = $('#photo-template').append(html);
+    //  console.log(sections)
+    //  $('main').append(sections)
+    for ( let i = 0 ; i<hornsArray.length; i++){
+        hornsArray[i].printOut();
+    }
+ })
+
+
+ $('#button2').on('click',function(){
+    $('#photo-template').empty();
+    let choose = $('#template').html();
+// let html = Mustache.render(choose,this)
+// console.log(choose)
+// let sections2 = $('#photo-template-page2')
+// $('main').append(sections2)
+for ( let i = 0 ; i<page2Array.length; i++){
+
+    page2Array[i].printOut();
+}
+})
+
+$('#sorting').on('change',function(){
+    console.log(this.value)
+    hornsArray.sort
+    if(this.value=='by-title'){
+
+    }
+
+})
+var  hornsByTitle  = hornsArray.sort((a,b) =>
+a.title.toUpperCase() >b.title.toUpperCase()
+
+
+);
