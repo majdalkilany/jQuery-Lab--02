@@ -1,0 +1,10 @@
+main{
+    flex-wrap: nowrap;
+}
+#photo-template{
+    flex-wrap: nowrap;
+
+}
+ * body{
+   width: 100%;
+}
