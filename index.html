@@ -1,82 +1,64 @@
-<!-- Note: you may use this starter code, but it is not a requirement -->
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>The Gallery of Horns</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/them.css">
+
+<head>
+  <title>The Gallery of Horns</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Courgette|Liu+Jian+Mao+Cao|Mali:400,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layouts.css">
+  <link rel="stylesheet" href="css/modules.css">
+
+</head>
+
+<body>
+  <header>
+    <h1>The Gallery of Horns</h1>
+    
+    <div id="view">
+    <button id="button1" class="active">Page 1</button>
+    <button id="button2">Page 2</button>
+    </div>
+
+    <div id="sort">
+    <button id="button3" class="active">By Name</button>
+    <button id="button4">By Horns</button>
+    </div>
+
+    <select class="imgs">
+      <option value="Filter by Keyword">Filter by Keyword</option>
+    </select>
+  </header>
+
+  <script id="keywordstemplate" type="x-tmpl-mustache">
+    <option value="{{keyword}}">{{keyword}}</option>
+    </script>
 
 
-
-<script id='template' type="x-tmpl-mustache" > 
-
-<div class="{{keyword}}" >
-
-  <h2>{{title}} </h2>
-  <img src="{{image_url}}" alt="{{keyword}}" class="hide" id="{{keyword}}" >
-  <p>{{description}} </p>
-
-</div>
-
-
-
-
-</script>
-
-
-
-
-  </head>
-  <body>
-    <header>
-      <h1>The Gallery of Horns</h1>
-      <select id="selectEle">
-        <option value="default"  class="remove">Filter by Keyword</option>
-
-      </select>
-      <button id="button1" class="active">Page 1  </button>
-
-      <button id="button2">Page 2</button>
-
-      <select id="sorting">
-        <option value="sort"  class="Filter">sort</option>
-
-        <option value="by-title"  class="remove">Filter by title</option>
-
-        <option value="by-horn"  class="remove">Filter by horn</option>
-
-      </select>
-
-      
-
-    </header>
-    <main>
-
-      <section class="hide" id= "photo-template-page2">
-        <h2></h2>
-        <img src="" alt="" class="hide">
-        <p></p>
+  <script id="horns-template" type="x-tmpl-mustache">
+      <section title="{{title}}" id="photo-template">
+        <h2>{{title}}</h2>
+        <img src="{{image_url}}" alt="{{keyword}}">
+        <div id="para">
+        <p>{{description}}</p>
+        <p>Number of horns: <span>{{horns}}</span></p>
+        </div>
       </section>
+    </script>
 
+  <main>
+  </main>
 
+  <footer>
+    &copy; 2018 Code Fellows
+  </footer>
 
-      <section class="hide" id= "photo-template">
-        <h2></h2>
-        <img src="" alt="" class="hide">
-        <p></p>
-      </section>
-    </main>
-    <footer>
-      &copy; 2018 Code Fellows
-      <script src="https://unpkg.com/mustache@latest"></script> 
+  <script src="https://unpkg.com/mustache@latest"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
 
-      <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</body>
 
-      <script src="js/apps.js"></script>
-    </footer>
-  </body>
 </html>

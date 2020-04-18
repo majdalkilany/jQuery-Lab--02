@@ -1,0 +1,20 @@
+header{
+    clear: right;
+    display: flex;
+    justify-content: space-between;
+    align-items: space-around;
+    flex-wrap: wrap;
+}
+
+footer{
+    clear: both;
+}
+
+main{
+
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
